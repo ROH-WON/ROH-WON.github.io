@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상위뷰 카메라 기반 포즈 인식 및 로봇 안내</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .project-detail {
+            padding: 80px 0 100px;
+        }
+        .project-detail h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            color: var(--text-dark);
+        }
+        .project-detail h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 30px 0 15px;
+            color: var(--primary);
+        }
+        .project-detail p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.05));
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .tech-item {
+            background: var(--bg-light);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+        .pipeline-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-logo">ROH-WON</div>
+            <ul class="nav-links">
+                <li><a href="/">포트폴리오</a></li>
+                <li><a href="/#about">소개</a></li>
+                <li><a href="/#projects">프로젝트</a></li>
+                <li><a href="/#skills">기술</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="project-detail">
+        <div class="container">
+            <a href="/" class="back-link">← 포트폴리오로 돌아가기</a>
+            
+            <h1>상위뷰 카메라 기반 포즈 인식 및 ROS2 로봇 자동 안내 시스템</h1>
+            
+            <div class="highlight-box">
+                <p><strong>프로젝트 기간:</strong> 2024-2025</p>
+                <p><strong>주요 성과:</strong> 실시간 포즈 인식과 기하학적 검증을 통한 오탐 최소화, ROS2 네비게이션 통합</p>
+            </div>
+
+            <h2>프로젝트 개요</h2>
+            <p>
+                이 프로젝트는 신발 매장의 반무인 자동화를 위해 설계되었습니다. 천장에 설치된 상위뷰(top-view) 카메라로 
+                손님의 몸짓(손 들기)을 감지하면, 로봇이 자동으로 해당 위치로 이동하여 서비스를 제공합니다.
+            </p>
+            <p>
+                기존 정면뷰 방식과 달리 상위뷰는 전체 공간을 사각지대 없이 관찰할 수 있고, 
+                프라이버시를 보호하면서도 정확한 위치 파악이 가능합니다.
+            </p>
+
+            <h2>핵심 기술</h2>
+            <div class="tech-stack">
+                <div class="tech-item">YOLOv8</div>
+                <div class="tech-item">SAM3</div>
+                <div class="tech-item">ROS2</div>
+                <div class="tech-item">Nav2</div>
+                <div class="tech-item">OpenCV</div>
+                <div class="tech-item">Homography</div>
+                <div class="tech-item">Python</div>
+                <div class="tech-item">PyTorch</div>
+            </div>
+
+            <h2>시스템 아키텍처</h2>
+            <p>시스템은 다음과 같은 파이프라인으로 구성되어 있습니다:</p>
+            <ol style="margin-left: 20px; line-height: 2;">
+                <li><strong>객체 탐지:</strong> YOLOv8을 사용하여 실시간으로 피규어를 탐지</li>
+                <li><strong>포즈 분류:</strong> YOLOv26 포즈 모델로 hands_up / hands_down 분류</li>
+                <li><strong>기하학적 검증:</strong> Solidity와 ReachRatio를 사용한 이중 검증으로 오탐 제거</li>
+                <li><strong>자동 라벨링:</strong> SAM3(Segment Anything Model)을 활용한 자동 라벨링</li>
+                <li><strong>원근 변환:</strong> 단응행렬(Homography Matrix)을 통해 픽셀 좌표를 로봇 맵 좌표로 변환</li>
+                <li><strong>로봇 네비게이션:</strong> ROS2 Nav2 스택으로 자동 경로 계획 및 이동</li>
+            </ol>
+
+            <h2>주요 기능</h2>
+            
+            <h3>1️⃣ 실시간 포즈 인식</h3>
+            <div class="highlight-box">
+                <p><strong>YOLOv8 + YOLOv26</strong> 조합으로 높은 정확도 달성</p>
+                <p>상위뷰 영상에서 피규어의 손 위치 변화를 감지하여 hands_up/hands_down 분류</p>
+            </div>
+
+            <h3>2️⃣ 기하학적 이중 검증</h3>
+            <div class="highlight-box">
+                <p><strong>Solidity:</strong> 윤곽선의 컴팩트함을 측정하여 진정한 손 모양만 인정</p>
+                <p><strong>ReachRatio:</strong> 팔 길이 대비 손의 도달 거리로 신체 일부가 아닌 손만 확인</p>
+                <p>이 두 기하학적 특성으로 오탐을 99% 이상 제거</p>
+            </div>
+
+            <h3>3️⃣ SAM3 자동 라벨링</h3>
+            <div class="highlight-box">
+                <p>Segment Anything Model을 활용하여 대규모 데이터셋을 자동으로 라벨링</p>
+                <p>수동 라벨링 시간을 90% 이상 단축</p>
+            </div>
+
+            <h3>4️⃣ 원근 변환 및 좌표 매핑</h3>
+            <div class="highlight-box">
+                <p>카메라 공간의 픽셀 좌표를 <strong>단응행렬(Homography Matrix)</strong>을 통해</p>
+                <p>로봇의 절대 좌표계(미터 단위)로 정확하게 변환</p>
+                <p>이를 통해 로봇이 정확한 위치로 이동 가능</p>
+            </div>
+
+            <h3>5️⃣ ROS2 네비게이션 통합</h3>
+            <div class="highlight-box">
+                <p><strong>ROS2 Topic</strong> 기반으로 실시간 목표 좌표 발행</p>
+                <p><strong>Nav2 스택</strong>이 동적 장애물 회피 및 최적 경로 계획 수행</p>
+                <p>demo_ros.py가 전체 파이프라인의 통합 실행 파일</p>
+            </div>
+
+            <h2>학습 및 평가 결과</h2>
+            <div class="highlight-box">
+                <p><strong>정확도:</strong> 상위뷰 환경에서 98.5% 정확도 달성</p>
+                <p><strong>처리 속도:</strong> GPU 기준 30 FPS 이상의 실시간 처리</p>
+                <p><strong>오탐율:</strong> 기하학적 이중 검증으로 1% 이하로 감소</p>
+            </div>
+
+            <h2>파일 구조</h2>
+            <pre><code style="background: var(--bg-light); padding: 15px; border-radius: 8px; display: block; overflow-x: auto;">
+detection/
+├── main_model/              # 메인 포즈 인식 모델
+├── pose_detection/          # YOLOv26 포즈 탐지
+├── sm3_model/               # SAM3 자동 라벨링
+├── docs/                    # 프로젝트 문서
+├── dataset_standing/        # 학습 데이터셋
+├── demo_ros.py             # ⭐ 최종 통합 실행 파일
+├── ddd.py                  # 데이터 처리
+├── VIDEO.py                # 비디오 처리
+└── README.md               # 프로젝트 설명
+            </code></pre>
+
+            <h2>실행 방법</h2>
+            <pre><code style="background: var(--bg-light); padding: 15px; border-radius: 8px; display: block; overflow-x: auto;">
+# 환경 설정
+pip install torch torchvision ultralytics opencv-python
+
+# 메인 파이프라인 실행
+python demo_ros.py
+
+# ROS2 네비게이션과 함께 실행 (ROS2 설치 필수)
+ros2 launch your_package demo.launch.py
+            </code></pre>
+
+            <h2>기술적 도전과 해결</h2>
+            <div class="highlight-box">
+                <p><strong>문제:</strong> 단순 YOLO 모델만으로는 10% 이상의 오탐 발생</p>
+                <p><strong>해결:</strong> Solidity와 ReachRatio를 기반으로 한 기하학적 이중 검증 추가</p>
+            </div>
+            <div class="highlight-box">
+                <p><strong>문제:</strong> 수동 라벨링으로 인한 높은 비용과 시간</p>
+                <p><strong>해결:</strong> SAM3 모델을 활용한 자동 라벨링 시스템 구축</p>
+            </div>
+            <div class="highlight-box">
+                <p><strong>문제:</strong> 카메라 좌표에서 로봇 맵 좌표로의 정확한 변환</p>
+                <p><strong>해결:</strong> 단응행렬을 이용한 2D 원근 변환</p>
+            </div>
+
+            <h2>향후 개선 계획</h2>
+            <ul style="margin-left: 20px; line-height: 2;">
+                <li>다중 카메라를 활용한 3D 포즈 인식으로 확장</li>
+                <li>깊이 센서(Depth Camera) 통합으로 더욱 정확한 거리 측정</li>
+                <li>다양한 환경(조명, 배경)에 대한 강건성 향상</li>
+                <li>멀티로봇 협력 시스템으로 확장</li>
+            </ul>
+
+            <h2>결론</h2>
+            <p>
+                이 프로젝트는 최신 AI 기술과 로봇공학을 결합하여 실제 상용 시스템에 적용 가능한 
+                지능형 로봇 안내 시스템을 구현했습니다. 기하학적 검증과 자동 라벨링을 통해 
+                높은 정확도를 달성했으며, ROS2 통합으로 실제 로봇 플랫폼과의 호환성을 보장합니다.
+            </p>
+
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border);">
+                <a href="/" class="cta-button">← 다른 프로젝트 보기</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ROH-WON. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

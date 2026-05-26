@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROH-WON Portfolio | AI & 컴퓨터 비전 개발자</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-logo">ROH-WON</div>
+            <ul class="nav-links">
+                <li><a href="#about">소개</a></li>
+                <li><a href="#projects">프로젝트</a></li>
+                <li><a href="#skills">기술</a></li>
+                <li><a href="#contact">연락처</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container">
+            <h1>ROH-WON</h1>
+            <p class="hero-subtitle">AI | 컴퓨터 비전 | 로봇 개발자</p>
+            <p class="hero-desc">YOLO, SAM, ROS2를 활용한 지능형 시스템 개발</p>
+            <a href="#projects" class="cta-button">프로젝트 보기</a>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>소개</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        안녕하세요. 저는 AI와 컴퓨터 비전 기술을 활용하여 실제 문제를 해결하는 개발자입니다.
+                    </p>
+                    <p>
+                        <strong>YOLOv8, SAM3</strong> 같은 최신 딥러닝 모델과 <strong>ROS2, OpenCV</strong> 등의 로봇공학 및 영상처리 라이브러리를 활용하여 
+                        지능형 시스템을 설계하고 구현합니다.
+                    </p>
+                    <p>
+                        특히 <strong>상위뷰 카메라 기반 포즈 인식</strong>, <strong>실시간 객체 탐지</strong>, <strong>로봇 자동 네비게이션</strong> 등 
+                        엣지 케이스를 고려한 견고한 파이프라인 개발에 강점이 있습니다.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">주요 프로젝트</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">기술 스택</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">ROS2</span>
+                        <span class="stat-label">로봇 개발</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>주요 프로젝트</h2>
+            <div class="projects-grid">
+                <!-- Project 1: Top-View Pose Detection -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3>상위뷰 카메라 기반 포즈 인식 및 로봇 안내 시스템</h3>
+                    </div>
+                    <p class="project-excerpt">
+                        천장에 설치된 카메라로 피규어의 손 움직임(hands_up/hands_down)을 감지하고, 
+                        기하학적 검증(Solidity, ReachRatio)과 원근 변환을 통해 로봇을 자동으로 안내하는 시스템.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">SAM3</span>
+                        <span class="tech-tag">ROS2</span>
+                        <span class="tech-tag">Nav2</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Homography</span>
+                    </div>
+                    <div class="project-footer">
+                        <p class="project-highlight">✓ 기하학적 이중 검증으로 오탐 최소화</p>
+                        <p class="project-highlight">✓ 실시간 ROS2 Topic 기반 로봇 제어</p>
+                        <a href="projects/detection.html" class="project-link">자세히 보기 →</a>
+                    </div>
+                </article>
+
+                <!-- Project 2: Vision Detection -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3>고정밀 객체 탐지 및 분할</h3>
+                    </div>
+                    <p class="project-excerpt">
+                        다양한 환경에서의 실시간 객체 탐지와 인스턴스 분할을 수행하는 컴퓨터 비전 파이프라인.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">YOLOv8-Seg</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                    <div class="project-footer">
+                        <p class="project-highlight">✓ 실시간 탐지 및 분할</p>
+                        <p class="project-highlight">✓ 커스텀 학습 파이프라인</p>
+                        <a href="projects/vision.html" class="project-link">자세히 보기 →</a>
+                    </div>
+                </article>
+
+                <!-- Project 3: ROS2 Navigation -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3>ROS2 기반 로봇 자율주행 및 네비게이션</h3>
+                    </div>
+                    <p class="project-excerpt">
+                        ROS2와 Nav2 스택을 활용한 로봇의 자율주행, 경로 계획, 동적 장애물 회피 시스템.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">ROS2</span>
+                        <span class="tech-tag">Nav2</span>
+                        <span class="tech-tag">SLAM</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <div class="project-footer">
+                        <p class="project-highlight">✓ 멀티로봇 협업 가능</p>
+                        <p class="project-highlight">✓ 실시간 경로 최적화</p>
+                        <a href="projects/robot.html" class="project-link">자세히 보기 →</a>
+                    </div>
+                </article>
+
+                <!-- Project 4: Socket Communication -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3>실시간 UDP 소켓 통신 시스템</h3>
+                    </div>
+                    <p class="project-excerpt">
+                        고속 실시간 데이터 처리를 위한 UDP 기반 AI 서버와 클라이언트 통신 시스템.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Socket</span>
+                        <span class="tech-tag">UDP</span>
+                        <span class="tech-tag">Multi-threading</span>
+                    </div>
+                    <div class="project-footer">
+                        <p class="project-highlight">✓ 낮은 레이턴시 통신</p>
+                        <p class="project-highlight">✓ 스케일 가능한 아키텍처</p>
+                        <a href="projects/socket.html" class="project-link">자세히 보기 →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>기술 스택</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>딥러닝 & CV</h3>
+                    <ul>
+                        <li>YOLOv8 / YOLOv26</li>
+                        <li>SAM (Segment Anything)</li>
+                        <li>PyTorch</li>
+                        <li>OpenCV</li>
+                        <li>Computer Vision</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>로봇공학</h3>
+                    <ul>
+                        <li>ROS2 / ROS</li>
+                        <li>Nav2</li>
+                        <li>SLAM</li>
+                        <li>Motion Planning</li>
+                        <li>Sensor Integration</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>프로그래밍</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>C++</li>
+                        <li>Socket Programming</li>
+                        <li>Multi-threading</li>
+                        <li>Real-time Systems</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>개발 도구</h3>
+                    <ul>
+                        <li>Git / GitHub</li>
+                        <li>Docker</li>
+                        <li>VS Code</li>
+                        <li>Jupyter</li>
+                        <li>Linux</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>연락처</h2>
+            <p>프로젝트 협업이나 문의사항이 있으신가요?</p>
+            <div class="contact-links">
+                <a href="https://github.com/ROH-WON" class="contact-link" target="_blank">
+                    <span class="icon">🔗</span> GitHub
+                </a>
+                <a href="mailto:roh.won@example.com" class="contact-link">
+                    <span class="icon">📧</span> Email
+                </a>
+                <a href="https://linkedin.com/in/rohwon" class="contact-link" target="_blank">
+                    <span class="icon">💼</span> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ROH-WON. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
